@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>😈OKX Whitelister</title>
+    <style>
+        .table-container {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            font-family: monospace;
+
+        }
+
+        .text-area-container {
+            display: flex;
+            margin-right: 15px;
+        }
+
+        .line-numbers {
+            margin-top: 3px;
+            flex-shrink: 0;
+            padding-right: 3px;
+            text-align: right;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        h2 {
+            margin-left: 20px;
+        }
+
+        #marquee-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1; /* Позволяет элементу находиться поверх других элементов */
+        }
+
+        #marquee-container marquee {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+
+    </style>
+</head>
+
+<body>
+<h2>Welcome, Abusers❤️</h2>
+<div id="marquee-container">
+    <marquee id="dynamic-marquee" scrollamount="20" direction="down" style="font-size: 50px; line-height: 100%;"></marquee>
+</div>
+<div class="table-container" id="table-container">
+
+    <div class="text-area-container">
+        <div class="line-numbers" id="addresses-line-numbers">
+            <script>
+                for (let i = 1; i <= 20; i++) {
+                    document.write(i + '<br>');
+                }
+            </script>
+        </div>
+        <textarea id="addresses" rows="20" cols="50" placeholder="Addresses" autofocus
+                  onpaste="splitTextOnPaste(event, 'addresses')" oninput="codeOnChange()"></textarea>
+    </div>
+    <div class="text-area-container">
+        <div class="line-numbers" id="names-line-numbers">
+            <script>
+                for (let i = 1; i <= 20; i++) {
+                    document.write(i + '<br>');
+                }
+            </script>
+        </div>
+        <textarea id="names" rows="20" cols="50" placeholder="Names" onpaste="splitTextOnPaste(event, 'names')"
+                  oninput="codeOnChange()"></textarea>
+
+    </div>
+
+</div>
+
+<textarea id="code" rows="20" cols="110" placeholder="Code" onclick="copyTextToClipboard()"
+          onerror="copyTextToClipboard()" readonly></textarea>
+
+<script>
+    function splitTextOnPaste(event, element_id) {
+        event.preventDefault();
+
+        const clipboardData = event.clipboardData || window.clipboardData;
+        const pastedText = clipboardData.getData('text');
+
+        // ELEMENT
+
+        const lines = pastedText.split('\n').slice(0, 20);
+
+        const formattedLines = lines.map((line) => {
+            return line.trim();
+        });
+
+        const textareaElement = document.getElementById(element_id);
+        textareaElement.value = formattedLines.join('\n');
+
+        // CODE
+        codeOnChange()
+
+    }
+
+    function codeOnChange() {
+        const addressesText = document.getElementById('addresses').value.split('\n');
+        const formattedAddresses = addressesText
+            .filter(function (address) {
+                return address !== ''; // Фильтруем пустые элементы
+            })
+            .map(function (address) {
+                return '"' + address + '"'
+            })
+
+        const namesText = document.getElementById('names').value.split('\n');
+        const formattedNames = namesText
+            .filter(function (name) {
+                return name !== ''; // Фильтруем пустые элементы
+            })
+            .map(function (name) {
+                return '"' + name + '"'
+            })
+
+        const formattedText = `(function() {
+  const wallets = [
+${formattedAddresses}
+  ];
+
+  const names = [
+${formattedNames}
+  ];
+
+const walletSelectors = [];
+const nameSelectors = [];
+
+for (let i = 3; i <= 98; i += 5) {
+walletSelectors.push(
+ \`#scroll-box > div > div > form > div:nth-child(5) > div > div > div > div > div:nth-child(\${i}) > div.okui-form-item-control > div > div > div > div > input\`
+);
+}
+
+for (let i = 5; i <= 100; i += 5) {
+nameSelectors.push(
+ \`#scroll-box > div > div > form > div:nth-child(5) > div > div > div > div > div:nth-child(\${i}) > div.okui-form-item-control > div > div > div > div > input\`
+);
+}
+
+const addButtonSelector =
+"#scroll-box > div > div > form > div:nth-child(5) > div > div > div > div > div.add-address-form-btn";
+
+
+function fillInput(input, value) {
+input.setAttribute('value', value);
+input.dispatchEvent(new Event('input', { bubbles: true }));
+}
+
+async function addWallets() {
+const scrollBox = document.getElementById('scroll-box');
+for (let i = 0; i < wallets.length; i++) {
+  console.log(\`Добавление кошелька \${i + 1} из \${wallets.length}\`);
+
+  const addressInput = document.querySelector(walletSelectors[i]);
+  const nameInput = document.querySelector(nameSelectors[i]);
+
+  fillInput(addressInput, wallets[i]);
+  await new Promise((resolve) => setTimeout(resolve, 300));
+
+  if (names.length > 0) {
+    fillInput(nameInput, names[i]);
+    await new Promise((resolve) => setTimeout(resolve, 400));
+  }
+
+  if (i < wallets.length - 1) {
+    const button = document.querySelector(addButtonSelector);
+    button.click();
+    await new Promise((resolve) => setTimeout(resolve, 300));
+    scrollBox.scroll(0,scrollBox.scrollHeight)
+  }
+}
+
+console.log('Завершено');
+}
+
+addWallets();
+})();
+`;
+        document.getElementById('code').value = formattedText;
+
+    }
+
+    function copyTextToClipboard() {
+        const textToCopy = document.getElementById('code').value;
+        if (textToCopy) {
+            navigator.clipboard.writeText(textToCopy)
+                .then(function () {
+                    alert('Код скопирован в буфер обмена');
+                });
+        }
+    }
+
+    function calculateMarqueeContent() {
+    const marquee = document.getElementById('dynamic-marquee');
+    const marqueeContainer = document.getElementById('marquee-container');
+    const screenWidth = window.innerWidth;
+    const smileyWidth = 72; // Ширина одного смайлика (в пикселях)
+
+    const smileysCount = Math.ceil(screenWidth / smileyWidth / 2 - 1);
+    console.log(`screenWidth: ${screenWidth} | smileysCount: ${smileysCount}`)
+
+    // Генерируем строку с заданным количеством смайликов
+    const smileys = Array(smileysCount).fill('💸🤑');
+    marquee.textContent = smileys.join('');
+
+    // marquee.textContent = (marquee.textContent +? '\n') * 3
+
+    // Устанавливаем ширину элемента <marquee> равной ширине страницы
+    marquee.style.width = screenWidth + 'px';
+    marqueeContainer.style.width = screenWidth + 'px';
+}
+
+// Вызываем функцию при загрузке страницы и при изменении размеров окна
+window.addEventListener('load', calculateMarqueeContent);
+window.addEventListener('resize', calculateMarqueeContent);
+
+
+</script>
+</body>
+</html>
