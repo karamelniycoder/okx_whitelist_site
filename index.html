@@ -4,7 +4,9 @@
     <title>😈OKX Whitelister</title>
     <style>
 
-        body {background-color: #363636;}
+        body {
+            background-color: #363636;
+        }
 
         .table-container {
             display: flex;
@@ -31,12 +33,24 @@
             resize: none;
             background-color: #212121;
             color: #ffffff;
+            line-height: 1;
+            -webkit-transition: all 0.25s ease;
+            transition-duration: 0.25s;
+            overflow: hidden;
         }
+
+        textarea:hover {
+            color: #a1f4ff;
+            box-shadow: 0px 0px 5px #ffffff;
+        }
+
 
         h2 {
             margin-left: 20px;
             color: #ffffff;
+            text-shadow: 0 0 5px #000000;
         }
+
 
         #marquee-container {
             position: fixed;
@@ -45,8 +59,9 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            z-index: -1; /* Позволяет элементу находиться поверх других элементов */
+            z-index: -1;
         }
+
 
         #marquee-container marquee {
             width: 100%;
@@ -55,6 +70,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
+            text-shadow: 0 0 50px #626262;
         }
 
 
@@ -64,7 +80,8 @@
 <body>
 <h2>Welcome, Abusers❤️</h2>
 <div id="marquee-container">
-    <marquee id="dynamic-marquee" scrollamount="20" direction="down" style="font-size: 50px; line-height: 100%;"></marquee>
+    <marquee id="dynamic-marquee" scrollamount="20" direction="down"
+             style="font-size: 50px; line-height: 100%;"></marquee>
 </div>
 <div class="table-container" id="table-container">
 
@@ -124,7 +141,7 @@
         const addressesText = document.getElementById('addresses').value.split('\n');
         const formattedAddresses = addressesText
             .filter(function (address) {
-                return address !== ''; // Фильтруем пустые элементы
+                return address !== '';
             })
             .map(function (address) {
                 return '"' + address + '"'
@@ -133,7 +150,7 @@
         const namesText = document.getElementById('names').value.split('\n');
         const formattedNames = namesText
             .filter(function (name) {
-                return name !== ''; // Фильтруем пустые элементы
+                return name !== '';
             })
             .map(function (name) {
                 return '"' + name + '"'
@@ -217,28 +234,21 @@ addWallets();
     }
 
     function calculateMarqueeContent() {
-    const marquee = document.getElementById('dynamic-marquee');
-    const marqueeContainer = document.getElementById('marquee-container');
-    const screenWidth = window.innerWidth;
-    const smileyWidth = 72; // Ширина одного смайлика (в пикселях)
+        const marquee = document.getElementById('dynamic-marquee');
+        const marqueeContainer = document.getElementById('marquee-container');
+        const screenWidth = window.innerWidth;
+        const smileyWidth = 72;
 
-    const smileysCount = Math.ceil(screenWidth / smileyWidth / 2 - 1);
-    console.log(`screenWidth: ${screenWidth} | smileysCount: ${smileysCount}`)
+        const smileysCount = Math.ceil(screenWidth / smileyWidth / 2 - 1);
+        const smileys = Array(smileysCount).fill('💸🤑');
+        marquee.textContent = smileys.join('');
 
-    // Генерируем строку с заданным количеством смайликов
-    const smileys = Array(smileysCount).fill('💸🤑');
-    marquee.textContent = smileys.join('');
+        marquee.style.width = screenWidth + 'px';
+        marqueeContainer.style.width = screenWidth + 'px';
+    }
 
-    // marquee.textContent = (marquee.textContent +? '\n') * 3
-
-    // Устанавливаем ширину элемента <marquee> равной ширине страницы
-    marquee.style.width = screenWidth + 'px';
-    marqueeContainer.style.width = screenWidth + 'px';
-}
-
-// Вызываем функцию при загрузке страницы и при изменении размеров окна
-window.addEventListener('load', calculateMarqueeContent);
-window.addEventListener('resize', calculateMarqueeContent);
+    window.addEventListener('load', calculateMarqueeContent);
+    window.addEventListener('resize', calculateMarqueeContent);
 
 
 </script>
