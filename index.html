@@ -26,8 +26,15 @@
     </div>
 </div>
 
-<textarea id="code" rows="20" cols="110" placeholder="Code" onclick="copyTextToClipboard()"
-          onerror="copyTextToClipboard()" readonly></textarea>
+<div>
+    <div class="toast-container">
+        <div class="toast toast_default toast_message">
+            <div class="toast__body">Сode is copied to clipboard</div>
+        </div>
+    </div>
+    <textarea id="code" rows="20" cols="110" placeholder="Code" onclick="copyTextToClipboard()" readonly></textarea>
+
+</div>
 
 </body>
 </html>

@@ -112,9 +112,18 @@ function copyTextToClipboard() {
     const textToCopy = document.getElementById('code').value;
     if (textToCopy) {
         navigator.clipboard.writeText(textToCopy)
-            .then(function () {
-                alert('Код скопирован в буфер обмена');
-            });
+
+        const toast = document.getElementsByClassName('toast_default')[0]
+        const code = document.getElementById('code')
+        toast.classList.add("toast_show")
+        code.classList.add('colored_textarea')
+        setTimeout(() => {
+            {
+                toast.classList.remove("toast_show");
+                code.classList.remove('colored_textarea')
+            }
+        }, 500)
+
     }
 }
 
