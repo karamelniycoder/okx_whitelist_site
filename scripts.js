@@ -54,18 +54,18 @@ const nameSelectors = [];
 
 for (let i = 3; i <= 98; i += 5) {
 walletSelectors.push(
- \`#scroll-box > div > div > form > div:nth-child(5) > div > div > div > div > div:nth-child(\${i}) > div.okui-form-item-control > div > div > div > div > input\`
+ \`#scroll-box > div > div > form > div:nth-child(6) > div > div > div > div > div:nth-child(\${i}) > div.okui-form-item-control > div > div > div > div > input\`
 );
 }
 
 for (let i = 5; i <= 100; i += 5) {
 nameSelectors.push(
- \`#scroll-box > div > div > form > div:nth-child(5) > div > div > div > div > div:nth-child(\${i}) > div.okui-form-item-control > div > div > div > div > input\`
+ \`#scroll-box > div > div > form > div:nth-child(6) > div > div > div > div > div:nth-child(\${i}) > div.okui-form-item-control > div > div > div > div > input\`
 );
 }
 
 const addButtonSelector =
-"#scroll-box > div > div > form > div:nth-child(5) > div > div > div > div > div.add-address-form-btn";
+"#scroll-box > div > div > form > div:nth-child(6) > div > div > div > div > div.add-address-form-btn";
 
 
 function fillInput(input, value) {
