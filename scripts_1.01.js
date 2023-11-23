@@ -75,6 +75,12 @@ input.dispatchEvent(new Event('input', { bubbles: true }));
 
 async function addWallets() {
 const scrollBox = document.getElementById('scroll-box');
+
+document.querySelector("#scroll-box > div > div > form > div:nth-child(1) > div.okui-form-item-control > div > div > div > div.okui-select-value-box > div > div").click();
+await new Promise((resolve) => setTimeout(resolve, 50));
+document.querySelector("#scroll-box > div > div > form > div:nth-child(1) > div.okui-form-item-control > div > div > div > div.okui-popup.select-popup-reference > div > div > div > div > div > div > div:nth-child(3) > div").click();
+document.querySelector("#scroll-box > div > div > form > div:nth-child(7) > div > div > div > label > span.okui-checkbox > input").click();
+
 for (let i = 0; i < wallets.length; i++) {
   console.log(\`Добавление кошелька \${i + 1} из \${wallets.length}\`);
 
@@ -82,21 +88,22 @@ for (let i = 0; i < wallets.length; i++) {
   const nameInput = document.querySelector(nameSelectors[i]);
 
   fillInput(addressInput, wallets[i]);
-  await new Promise((resolve) => setTimeout(resolve, 300));
+  await new Promise((resolve) => setTimeout(resolve, 50));
 
   if (names.length > 0) {
     fillInput(nameInput, names[i]);
-    await new Promise((resolve) => setTimeout(resolve, 400));
+    await new Promise((resolve) => setTimeout(resolve, 50));
   }
 
   if (i < wallets.length - 1) {
     const button = document.querySelector(addButtonSelector);
     button.click();
-    await new Promise((resolve) => setTimeout(resolve, 300));
+    await new Promise((resolve) => setTimeout(resolve, 50));
     scrollBox.scroll(0,scrollBox.scrollHeight)
   }
 }
 
+document.querySelector("#body > div.okui-transition-fade.okui-dialog.okui-dialog-float.okui-transition-fade-entered > div > div.okui-dialog-footer-box.okui-dialog-footer-line > div > button").click();
 console.log('Завершено');
 }
 
