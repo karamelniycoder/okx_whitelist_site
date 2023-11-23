@@ -104,6 +104,18 @@ for (let i = 0; i < wallets.length; i++) {
 }
 
 document.querySelector("#body > div.okui-transition-fade.okui-dialog.okui-dialog-float.okui-transition-fade-entered > div > div.okui-dialog-footer-box.okui-dialog-footer-line > div > button").click();
+
+for (let i = 0; i < 6; i++) {
+  try {
+    const send_email_code = document.querySelector("#scroll-box > div > div > form > div:nth-child(7) > div > div > div > div > form > div:nth-child(1) > div.okui-form-item-md.okui-form-item.okui-form-item-no-label > div > div > div > div > div > div > div > div");
+    send_email_code.click();
+    break;
+  } catch (error) {
+    console.log('жду кнопку Send Code для Email');
+    await new Promise((resolve) => setTimeout(resolve, 500));
+  }
+}
+
 console.log('Завершено');
 }
 
