@@ -2,39 +2,79 @@
 <html>
 <head>
     <title>😈OKX Whitelister</title>
-    <link rel="stylesheet" href="styles.css?v=1.1">
-    <script src="scripts_1.03.js"></script>
+    <link rel="stylesheet" href="styles_1_00.css?v=1.1">
+    <script src="scripts_1.04.js"></script>
     <meta content="no-cache"/>
 </head>
 
 <body>
-<h2>Welcome, Abusers❤️</h2>
+
 <div id="marquee-container">
     <marquee id="dynamic-marquee" scrollamount="20" direction="down"
              style="font-size: 50px; line-height: 100%;"></marquee>
 </div>
-<div class="table-container" id="table-container">
 
-    <div class="text-area-container">
-        <div class="line-numbers" id="addresses-line-numbers"></div>
-        <textarea id="addresses" rows="20" cols="50" placeholder="Addresses" autofocus
-                  onpaste="splitTextOnPaste(event, 'addresses')" oninput="codeOnChange()"></textarea>
+<h2>Welcome, Abusers❤️</h2>
+<div class="exchange_buttons">
+    <button onclick="showFieldsOKX()" class="okx_button"></button>
+    <button onclick="showFieldsBybit()" class="bybit_button"></button>
+</div>
+
+<div id="okx_fields">
+    <div class="table-container" id="table-container">
+
+        <div class="text-area-container">
+            <div class="line-numbers" id="addresses-line-numbers"></div>
+            <textarea id="addresses" rows="20" cols="50" placeholder="Addresses for OKX" autofocus
+                      onpaste="splitTextOnPaste(event, 'addresses')"
+                      oninput="codeOnChange('addresses', 'names', 'code')"></textarea>
+        </div>
+        <div class="text-area-container">
+            <div class="line-numbers" id="names-line-numbers"></div>
+            <textarea id="names" rows="20" cols="50" placeholder="Names" onpaste="splitTextOnPaste(event, 'names')"
+                      oninput="codeOnChange('addresses', 'names', 'code')"></textarea>
+        </div>
     </div>
-    <div class="text-area-container">
-        <div class="line-numbers" id="names-line-numbers"></div>
-        <textarea id="names" rows="20" cols="50" placeholder="Names" onpaste="splitTextOnPaste(event, 'names')"
-                  oninput="codeOnChange()"></textarea>
+    <div>
+        <div class="toast-container">
+            <div class="toast toast_default toast_message">
+                <div class="toast__body">Сode is copied to clipboard</div>
+            </div>
+        </div>
+        <textarea id="code" rows="20" cols="110" placeholder="Code will appear here"
+                  onclick="copyTextToClipboard('code')" readonly></textarea>
     </div>
 </div>
 
-<div>
-    <div class="toast-container">
-        <div class="toast toast_default toast_message">
-            <div class="toast__body">Сode is copied to clipboard</div>
+<div id="bybit_fields">
+    <div class="bybit_note">❗️ Временно работает только для Linea❗ ️
+
+        Укажите любое количество адресов в левое поле, а в правое необходиое название для адресов на Bybit
+        Например если в поле Label ввести "<i>Wallet-</i>", то на Bybit будут добавляться адреса с названием "<i>Wallet-<u>i</u></i>", где <u>i</u> - порядковый номер кошелька.
+
+        Запустите код на <a href="https://www.bybit.com/user/assets/money-address/batch"style="color: #ffffff">https://www.bybit.com/user/assets/money-address/batch</a>
+        Будут созданы функции <i>add()</i> (увидите при запуске в консоли), которые будут поочередно добавлять адреса
+        Для запуска этих функций введите <i>add1()</i>, <i>add2()</i> и тд
+    </div>
+
+    <div class="table-container" id="table-container_two">
+        <div class="text-area-container">
+            <div class="line-numbers_5" id="addresses-line-numbers_two"></div>
+            <textarea id="addresses_two" rows="5" cols="50" placeholder="Addresses for Bybit" onpaste="splitTextOnPaste(event, 'addresses_two')" oninput="bybitOnChange()"></textarea>
+        </div>
+        <div class="text-area-container">
+            <textarea id="bybit_label" rows="1" cols="50" placeholder="Label" onpaste="splitTextOnPaste(event, 'bybit_label')" oninput="bybitOnChange()"></textarea>
         </div>
     </div>
-    <textarea id="code" rows="20" cols="110" placeholder="Code" onclick="copyTextToClipboard()" readonly></textarea>
-
+    <div>
+        <div class="toast-container2">
+            <div class="toast toast_default toast_message">
+                <div class="toast__body">Сode is copied to clipboard</div>
+            </div>
+        </div>
+        <textarea id="code_two" rows="20" cols="110" placeholder="Code will appear here"
+                  onclick="copyTextToClipboard('code_two')" readonly></textarea>
+    </div>
 </div>
 
 </body>

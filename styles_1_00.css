@@ -3,6 +3,29 @@ body {
     background-color: #363636;
 }
 
+.exchange_buttons {
+    padding-left: 20px;
+    padding-bottom: 20px;
+}
+
+.okx_button {
+    margin-right: 20px;
+    width: 150px;
+    height: 90px;
+    background: url('images/okx_logo.png') 50% 50% no-repeat;
+    background-size: cover;
+    border-radius: 16px;
+}
+
+.bybit_button {
+    margin-right: 20px;
+    width: 150px;
+    height: 90px;
+    background: url('images/bybit_logo.png') 50% 50% no-repeat;
+    background-size: cover;
+    border-radius: 16px;
+}
+
 .table-container {
     display: flex;
     align-items: flex-start;
@@ -11,12 +34,34 @@ body {
 
 }
 
+.bybit_note {
+    opacity: 0.85;
+    white-space: pre-line;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    width: 650px;
+    border: 2px solid #652848; /* цвет рамки */
+    background-color: #ff69b4;
+    padding: 10px; /* отступы внутри рамки */
+    border-radius: 16px; /* скругление углов рамки */
+    /*text-align: center; !* выравнивание текста по центру *!*/
+    font-size: 18px; /* размер шрифта */
+    font-weight: bold; /* жирный шрифт */
+}
+
 .text-area-container {
     display: flex;
     margin-right: 15px;
 }
 
 .line-numbers {
+    margin-top: 3px;
+    flex-shrink: 0;
+    padding-right: 3px;
+    text-align: right;
+    color: #858585;
+}
+.line-numbers_5 {
     margin-top: 3px;
     flex-shrink: 0;
     padding-right: 3px;
@@ -41,8 +86,6 @@ textarea {
 textarea:hover {
     box-shadow: 0px 0px 5px #ffffff;
 }
-
-
 
 h2 {
     margin-left: 20px;
@@ -84,7 +127,14 @@ h2 {
 
 .toast-container {
     position: fixed;
-    top: 510px;
+    top: 630px;
+    left: 300px;
+    width: var(--toast-width)
+}
+
+.toast-container2 {
+    position: fixed;
+    top: 700px;
     left: 300px;
     width: var(--toast-width)
 }
