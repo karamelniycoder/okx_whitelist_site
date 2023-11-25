@@ -1,6 +1,7 @@
 
 body {
     background-color: #363636;
+    font: medium "Trebuchet MS";
 }
 
 .exchange_buttons {
@@ -26,6 +27,33 @@ body {
     border-radius: 16px;
 }
 
+#inputChain {
+    margin-top: 5px;
+    border-radius: 4px;
+    color: black;
+}
+
+select {
+    margin-top: 2px;
+    padding: 5px 10px;
+    border-radius: 8px;
+    width: 51%;
+    border: none;
+    color: black;
+}
+
+select:hover {
+    box-shadow: 0px 0px 5px #ffffff;
+}
+
+#theOnlyLabel {
+    color: #a6a6a6;
+    margin-right: 3px;
+    /*font-size: medium;*/
+    font-size: large;
+    padding-top: 5px;
+}
+
 .table-container {
     display: flex;
     align-items: flex-start;
@@ -35,18 +63,16 @@ body {
 }
 
 .bybit_note {
-    opacity: 0.85;
+    opacity: 0.75;
     white-space: pre-line;
-    margin-bottom: 20px;
-    margin-left: 10px;
+    margin-top: 20px;
+    margin-left: 67px;
     width: 650px;
-    border: 2px solid #652848; /* цвет рамки */
-    background-color: #ff69b4;
-    padding: 10px; /* отступы внутри рамки */
-    border-radius: 16px; /* скругление углов рамки */
-    /*text-align: center; !* выравнивание текста по центру *!*/
-    font-size: 18px; /* размер шрифта */
-    font-weight: bold; /* жирный шрифт */
+    background-color: #bebebe;
+    padding: 10px;
+    border-radius: 16px;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 .text-area-container {
@@ -69,6 +95,10 @@ body {
     color: #858585;
 }
 
+.row {
+    height: 100%;
+}
+
 textarea {
     resize: none;
     background-color: #212121;
@@ -76,6 +106,7 @@ textarea {
     -webkit-transition: all 0.25s ease;
     transition-duration: 0.25s;
     overflow: hidden;
+    border-radius: 4px;
 }
 
 .colored_textarea {
@@ -91,7 +122,7 @@ h2 {
     margin-left: 20px;
     color: #ffffff;
     text-shadow: 0 0 5px #000000;
-    font-family: "Trebuchet MS";
+    font-family: "Bell MT";
 }
 
 

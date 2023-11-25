@@ -28,8 +28,6 @@ function splitTextOnPaste(event, element_id) {
     } else {
         bybitOnChange();
     }
-
-
 }
 
 
@@ -142,6 +140,7 @@ addWallets();
 function bybitOnChange() {
     const addressesText = document.getElementById('addresses_two').value;
     const addressLabel = document.getElementById('bybit_label').value;
+    const chainToWithdraw = document.getElementById('inputChain').value;
 
     const formattedText = `const delay = e => new Promise((t => setTimeout(t, e)));
 
@@ -172,7 +171,6 @@ function setValue(e, t) {
     }))
 }
 window.addAddresses = async function(e, t, n = 1) {
-    await delay(1e3);
     for (let t = 0; t < e.length - 1; t++) {
         document.querySelector("#dynamic_form_nest_item .money__address-batch-form-action-btn").click(), await delay(100)
     }
@@ -182,8 +180,8 @@ window.addAddresses = async function(e, t, n = 1) {
             a = e[o];
         clickElement(l.querySelector(".ant-space-item:nth-child(2) .ant-form-item-control.css-29t93j > div > div > div > div")), await delay(100);
         const i = Array.from(document.querySelectorAll(".ant-select-dropdown"))[o];
-        setValue(i.querySelector("input"), "Linea"), await delay(500);
-        clickElement(i.querySelector('div[title="LINEA"]')), await delay(500);
+        setValue(i.querySelector("input"), "${chainToWithdraw}"), await delay(50);
+        clickElement(i.querySelector('div[title="${chainToWithdraw}"]')), await delay(50);
         setValue(l.querySelector(".ant-space-item:nth-child(3) input"), a);
         setValue(l.querySelector(".ant-space-item:nth-child(5) input"), \`\${t}\${Number(n) + Number(o)}\`)
     }
@@ -192,7 +190,7 @@ window.addAddresses = async function(e, t, n = 1) {
     let o = 1;
     for (let e = 0; e < c.length; e += 5) {
         const l = c.slice(e, e + 5);
-        window[\`add\${o}\`] = (e => () => window.addAddresses(l, t, e))(n), n += l.length, console.log(\`Generated add\${o}()\`), o++
+        window[\`add\${o}\`] = (e => () => window.addAddresses(l, t, e))(n), n += l.length, console.log(\`Write "add\${o}()" to run \${e + 1}-\${e + 6} accounts\`), o++
     }
 };
 
@@ -269,7 +267,6 @@ function showFieldsBybit() {
     fields_bybit.style.display = "block";
 }
 
-
 window.addEventListener('load', calculateMarqueeContent);
 window.addEventListener('load', showFieldsOKX);
 window.addEventListener('resize', calculateMarqueeContent);
@@ -289,4 +286,14 @@ window.addEventListener('load', function () {
             lineNumber_5.innerHTML += i + '<br>';
         }
     });
+
+    const datalist = document.getElementById('chainToWithdraw');
+    const options = ['ERC20', 'TRC20', 'SOL', 'BSC (BEP20)', 'MATIC', 'AVAXC', 'KAVAEVM', 'Arbitrum One', 'zkSync Lite', 'Optimism', 'Mantle Network', 'BTC', 'LINEA', 'Arbitrum Nova', 'zkSync Era', 'Base Mainnet', 'OP Mainnet', 'Arbitrum One (Bridged)', 'Polygon(bridged)', 'XRP', 'NEAR', 'ACA', 'Chiliz Legacy Chain', 'ADA', 'ALGO', 'APTOS', 'AR', 'ATOM', 'AVAX', 'AXL', 'Bitcoin Cash', 'BTG', 'CELO', 'Caduceus', 'CORE', 'DCR', 'DGB', 'Klaytn', 'Dogecoin', 'DOT', 'EGLD', 'EOS', 'Ethereum Classic', 'ETHF', 'ETHW', 'Filecoin', 'STEP', 'FLOW', 'FLR', 'FTM', 'GLMR', 'HBAR', 'HNT', 'HVH', 'ICP', 'ICX', 'Kaspa', 'KAVA', 'KDA', 'KON', 'KSM', 'LTC', 'Terra', 'Terra Classic', 'MINA', 'MOVR', 'OAS', 'OMEGA', 'ONE', 'POKT', 'QTUM', 'ROSE', 'BNB (BEP2)', 'RVN', 'SC', 'SCRT', 'SEI', 'STX', 'SUI', 'TENET', 'THETA', 'Celestia', 'TON', 'Waves', 'WAX', 'WEMIX', 'XDC', 'XEC', 'NEM', 'Stellar Lumens', 'XTZ', 'XYM', 'ZEN', 'ZIL'];
+
+    options.forEach((optionText) => {
+        const optionElement = document.createElement('option');
+        optionElement.value = optionText;
+        datalist.appendChild(optionElement);
+    });
+
 });
