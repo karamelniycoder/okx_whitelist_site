@@ -248,8 +248,8 @@ function showFieldsOKX() {
     var okx_button = document.getElementsByClassName("okx_button")[0];
     var bybit_button = document.getElementsByClassName("bybit_button")[0];
 
-    okx_button.style.opacity = 0.5;
-    bybit_button.style.opacity = 1;
+    okx_button.style.opacity = 1;
+    bybit_button.style.opacity = 0.5;
 
     fields_okx.style.display = "block";
     fields_bybit.style.display = "none";
@@ -262,8 +262,8 @@ function showFieldsBybit() {
     var okx_button = document.getElementsByClassName("okx_button")[0];
     var bybit_button = document.getElementsByClassName("bybit_button")[0];
 
-    okx_button.style.opacity = 1;
-    bybit_button.style.opacity = 0.5;
+    okx_button.style.opacity = 0.5;
+    bybit_button.style.opacity = 1;
 
     fields_okx.style.display = "none";
     fields_bybit.style.display = "block";
