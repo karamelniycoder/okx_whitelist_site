@@ -2,8 +2,8 @@
 <html>
 <head>
     <title>😈OKX Whitelister</title>
-    <link rel="stylesheet" href="styles_1_01.css?v=1.1">
-    <script src="scripts_1.06.js"></script>
+    <link rel="stylesheet" href="styles_1_02.css?v=1.1">
+    <script src="scripts_1.07.js"></script>
     <meta content="no-cache"/>
 </head>
 
@@ -21,24 +21,30 @@
 </div>
 
 <div id="okx_fields">
-    <div class="table-container" id="table-container">
+    <div class="table-container">
+        <select id="walletsType" onchange="codeOnChange()">
+            <option>EVM Address</option>
+            <option>Starknet Address</option>
+        </select>
+    </div>
 
+    <div class="table-container" id="table-container">
         <div class="text-area-container">
             <div class="line-numbers" id="addresses-line-numbers"></div>
             <textarea id="addresses" rows="20" cols="50" placeholder="Addresses for OKX" autofocus
                       onpaste="splitTextOnPaste(event, 'addresses')"
-                      oninput="codeOnChange('addresses', 'names', 'code')"></textarea>
+                      oninput="codeOnChange()"></textarea>
         </div>
         <div class="text-area-container">
             <div class="line-numbers" id="names-line-numbers"></div>
             <textarea id="names" rows="20" cols="50" placeholder="Names" onpaste="splitTextOnPaste(event, 'names')"
-                      oninput="codeOnChange('addresses', 'names', 'code')"></textarea>
+                      oninput="codeOnChange()"></textarea>
         </div>
     </div>
     <div>
         <div class="toast-container">
             <div class="toast toast_default toast_message">
-                <div class="toast__body">Сode is copied to clipboard</div>
+                <div class="toast__body">Code is copied to clipboard</div>
             </div>
         </div>
         <textarea id="code" rows="20" cols="110" placeholder="Code will appear here"
@@ -66,14 +72,16 @@
     <div>
         <div class="toast-container2">
             <div class="toast toast_default toast_message">
-                <div class="toast__body">Сode is copied to clipboard</div>
+                <div class="toast__body">Code is copied to clipboard</div>
             </div>
         </div>
         <textarea id="code_two" rows="15" cols="110" placeholder="Code will appear here"
                   onclick="copyTextToClipboard('code_two')" readonly></textarea>
     </div>
-    <div class="bybit_note">Укажите любое количество адресов в левое поле, а в правое необходиое название для адресов на Bybit.
-        Например если в поле Label ввести "<i>Wallet-</i>", то будут добавляться адреса с названием "<i>Wallet-<u>i</u></i>", где <u>i</u> - порядковый номер кошелька.
+    <div class="bybit_note">Укажите любое количество адресов в левое поле, а в правое необходиое название для адресов на
+        Bybit.
+        Например если в поле Label ввести "<i>Wallet-</i>", то будут добавляться адреса с названием "<i>Wallet-<u>i</u></i>",
+        где <u>i</u> - порядковый номер кошелька.
 
         Запустите код на <a href="https://www.bybit.com/user/assets/money-address/batch" style="color: #ffffff">https://www.bybit.com/user/assets/money-address/batch</a>.
         Будут созданы функции <i>add()</i> (увидите при запуске в консоли), которые будут поочередно добавлять адреса.
