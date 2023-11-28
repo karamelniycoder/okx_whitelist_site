@@ -51,13 +51,16 @@ function codeOnChange() {
         })
 
     const AddressesArea = document.getElementById("addresses")
+    const CodeArea = document.getElementById("code")
     const walletsType = document.getElementById("walletsType").value
     if (walletsType === "EVM Address") {
         AddressesArea.cols = 50
+        CodeArea.cols = 108
         chain_strings = `document.querySelector("#scroll-box > div > div > form > div:nth-child(1) > div.okui-form-item-control > div > div > div > div.okui-popup.select-popup-reference > div > div > div > div > div > div > div:nth-child(3) > div").click();`
     }
     else if (walletsType === "Starknet Address") {
         AddressesArea.cols = 50
+        CodeArea.cols = 108
         chain_strings = `document.querySelector("#scroll-box > div > div > form > div:nth-child(1) > div.okui-form-item-control > div > div > div > div.okui-popup.select-popup-reference > div > div > div > div > div > div > div:nth-child(2) > div > div:nth-child(1)").click();
 document.querySelector("#scroll-box > div > div > form > div:nth-child(4) > div.okui-form-item-control > div > div > div > div.okui-select-value-box > div > div > input.okui-input-input").click();
 await new Promise((resolve) => setTimeout(resolve, 50));
@@ -65,6 +68,7 @@ document.querySelector("#scroll-box > div > div > form > div:nth-child(4) > div.
     }
     else if (walletsType === "Aptos Address") {
         AddressesArea.cols = 70
+        CodeArea.cols = 128
         chain_strings = `document.querySelector("#scroll-box > div > div > form > div:nth-child(1) > div.okui-form-item-control > div > div > div > div.okui-popup.select-popup-reference > div > div > div > div > div > div > div:nth-child(2) > div > div:nth-child(1)").click();
 document.querySelector("#scroll-box > div > div > form > div:nth-child(4) > div.okui-form-item-control > div > div > div > div.okui-select-value-box > div > div > input.okui-input-input").click();
 await new Promise((resolve) => setTimeout(resolve, 50));
