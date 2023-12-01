@@ -23,7 +23,7 @@ function splitTextOnPaste(event, element_id) {
     textareaElement.value = formattedLines.join('\n');
 
     // CODE
-    if (element_id === "addresses") {
+    if (["addresses", "names"].includes(element_id)) {
         codeOnChange();
     } else {
         bybitOnChange();
