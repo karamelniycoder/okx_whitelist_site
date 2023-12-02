@@ -3,6 +3,7 @@ function splitTextOnPaste(event, element_id) {
 
     const clipboardData = event.clipboardData || window.clipboardData;
     const pastedText = clipboardData.getData('text');
+    console.log(`pastedText: ${pastedText}`)
 
     // ELEMENT
 
@@ -14,10 +15,12 @@ function splitTextOnPaste(event, element_id) {
     } else {
         lines = pastedText.split('\n');
     }
+    console.log(`lines: ${lines}`)
 
     const formattedLines = lines.map((line) => {
         return line.trim();
     });
+    console.log(`formattedLines: ${formattedLines}`)
 
     const textareaElement = document.getElementById(element_id);
     textareaElement.value = formattedLines.join('\n');
@@ -42,13 +45,11 @@ function codeOnChange() {
         })
 
     const namesText = document.getElementById('names').value.split('\n');
-    const formattedNames = namesText
-        .filter(function (name) {
-            return name !== '';
-        })
-        .map(function (name) {
-            return '"' + name + '"'
-        })
+    if (namesText[namesText.length-1] === '') {namesText.pop();}
+    const formattedNames = '"' + namesText.join('", "') + '"'
+
+    console.log(`\nnamesText: ${namesText}`)
+    console.log(`formattedNames: ${formattedNames}`)
 
     const AddressesArea = document.getElementById("addresses")
     const CodeArea = document.getElementById("code")
@@ -125,7 +126,7 @@ for (let i = 0; i < wallets.length; i++) {
   fillInput(addressInput, wallets[i]);
   await new Promise((resolve) => setTimeout(resolve, 50));
 
-  if (names.length > 0) {
+  if (names.length > 0 && names[i]) {
     fillInput(nameInput, names[i]);
     await new Promise((resolve) => setTimeout(resolve, 50));
   }
