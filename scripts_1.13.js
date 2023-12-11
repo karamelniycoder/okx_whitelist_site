@@ -75,6 +75,11 @@ document.querySelector("#scroll-box > div > div > form > div:nth-child(4) > div.
 await new Promise((resolve) => setTimeout(resolve, 50));
 document.querySelector("#scroll-box > div > div > form > div:nth-child(4) > div.okui-form-item-control > div > div > div > div.okui-popup.select-popup-reference > div > div > div > div > div > div > div:nth-child(1)").click();`
     }
+    else if (walletsType === "Harmony Address") {
+        AddressesArea.cols = 50
+        CodeArea.cols = 108
+        chain_strings = `document.querySelector("#scroll-box > div > div > form > div:nth-child(1) > div.okui-form-item-control > div > div > div > div.okui-popup.select-popup-reference > div > div > div > div > div > div > div:nth-child(2) > div > div:nth-child(1)").click();`
+    }
 
     const formattedText = `(function() {
   const wallets = [
