@@ -54,30 +54,46 @@ function codeOnChange() {
     const AddressesArea = document.getElementById("addresses")
     const CodeArea = document.getElementById("code")
     const walletsType = document.getElementById("walletsType").value
+
+    let step = 5;
+    let start_address_index = 3;
+    let start_name_index = 5;
+
     if (walletsType === "EVM Address") {
-        AddressesArea.cols = 50
-        CodeArea.cols = 108
+        AddressesArea.cols = 50;
+        CodeArea.cols = 108;
         chain_strings = `document.querySelector("#scroll-box > div > div > form > div:nth-child(1) > div.okui-form-item-control > div > div > div > div.okui-popup.select-popup-reference > div > div > div > div > div > div > div:nth-child(3) > div").click();`
     }
     else if (walletsType === "Starknet Address") {
-        AddressesArea.cols = 50
-        CodeArea.cols = 108
+        AddressesArea.cols = 50;
+        CodeArea.cols = 108;
         chain_strings = `document.querySelector("#scroll-box > div > div > form > div:nth-child(1) > div.okui-form-item-control > div > div > div > div.okui-popup.select-popup-reference > div > div > div > div > div > div > div:nth-child(2) > div > div:nth-child(1)").click();
 document.querySelector("#scroll-box > div > div > form > div:nth-child(4) > div.okui-form-item-control > div > div > div > div.okui-select-value-box > div > div > input.okui-input-input").click();
 await new Promise((resolve) => setTimeout(resolve, 50));
-document.querySelector("#scroll-box > div > div > form > div:nth-child(4) > div.okui-form-item-control > div > div > div > div.okui-popup.select-popup-reference > div > div > div > div > div > div > div:nth-child(5)").click();`
+var networks = document.querySelectorAll('.okui-select-item-container .okui-select-item');
+networks.forEach(function(network) {
+  if (network.textContent === 'Starknet') {network.click()}
+});`
     }
     else if (walletsType === "Aptos Address") {
-        AddressesArea.cols = 70
-        CodeArea.cols = 128
+        AddressesArea.cols = 70;
+        CodeArea.cols = 128;
         chain_strings = `document.querySelector("#scroll-box > div > div > form > div:nth-child(1) > div.okui-form-item-control > div > div > div > div.okui-popup.select-popup-reference > div > div > div > div > div > div > div:nth-child(2) > div > div:nth-child(1)").click();
 document.querySelector("#scroll-box > div > div > form > div:nth-child(4) > div.okui-form-item-control > div > div > div > div.okui-select-value-box > div > div > input.okui-input-input").click();
 await new Promise((resolve) => setTimeout(resolve, 50));
 document.querySelector("#scroll-box > div > div > form > div:nth-child(4) > div.okui-form-item-control > div > div > div > div.okui-popup.select-popup-reference > div > div > div > div > div > div > div:nth-child(1)").click();`
     }
     else if (walletsType === "Harmony Address") {
-        AddressesArea.cols = 50
-        CodeArea.cols = 108
+        AddressesArea.cols = 50;
+        CodeArea.cols = 108;
+        chain_strings = `document.querySelector("#scroll-box > div > div > form > div:nth-child(1) > div.okui-form-item-control > div > div > div > div.okui-popup.select-popup-reference > div > div > div > div > div > div > div:nth-child(2) > div > div:nth-child(1)").click();`
+    }
+    else if (walletsType === "Atom Address") {
+        step = 6;
+        start_name_index = 6;
+
+        AddressesArea.cols = 50;
+        CodeArea.cols = 108;
         chain_strings = `document.querySelector("#scroll-box > div > div > form > div:nth-child(1) > div.okui-form-item-control > div > div > div > div.okui-popup.select-popup-reference > div > div > div > div > div > div > div:nth-child(2) > div > div:nth-child(1)").click();`
     }
 
@@ -92,21 +108,23 @@ ${formattedNames}
 
 const walletSelectors = [];
 const nameSelectors = [];
+const start_address_index = ${start_address_index};
+const start_name_index = ${start_name_index};
+const step = ${step};
 
-for (let i = 3; i <= 98; i += 5) {
+for (let i = 0; i < 20; i++) {
 walletSelectors.push(
- \`#scroll-box > div > div > form > div:nth-child(6) > div > div > div > div > div:nth-child(\${i}) > div.okui-form-item-control > div > div > div > div > input.okui-input-input\`
+ \`#scroll-box > div > div > form > div:nth-child(6) > div > div > div > div > div:nth-child(\${step * i + start_address_index}) > div.okui-form-item-control > div > div > div > div > input.okui-input-input\`
 );
 }
 
-for (let i = 5; i <= 100; i += 5) {
+for (let i = 0; i < 20; i++) {
 nameSelectors.push(
- \`#scroll-box > div > div > form > div:nth-child(6) > div > div > div > div > div:nth-child(\${i}) > div.okui-form-item-control > div > div > div > div > input.okui-input-input\`
+ \`#scroll-box > div > div > form > div:nth-child(6) > div > div > div > div > div:nth-child(\${step * i + start_name_index}) > div.okui-form-item-control > div > div > div > div > input.okui-input-input\`
 );
 }
 
-const addButtonSelector =
-"#scroll-box > div > div > form > div:nth-child(6) > div > div > div > div > div.add-address-form-btn";
+const addButtonSelector = "#scroll-box > div > div > form > div:nth-child(6) > div > div > div > div > div.add-address-form-btn";
 
 
 function fillInput(input, value) {
