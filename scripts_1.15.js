@@ -227,7 +227,7 @@ window.addAddresses = async function(e, t, n = 1) {
     for (let o = 0; o < c.length; o++) {
         const l = c[o],
             a = e[o];
-        clickElement(l.querySelector(".ant-space-item:nth-child(2) .ant-form-item-control.css-29t93j > div > div > div > div")), await delay(100);
+        clickElement(l.querySelector(".ant-space-item:nth-child(2) .ant-form-item-control > div > div > div > div")), await delay(100);
         const i = Array.from(document.querySelectorAll(".ant-select-dropdown"))[o];
         setValue(i.querySelector("input"), "${chainToWithdraw}"), await delay(50);
         clickElement(i.querySelector('div[title="${chainToWithdraw}"]')), await delay(50);
