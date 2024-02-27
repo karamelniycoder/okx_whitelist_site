@@ -139,7 +139,7 @@ for (let i = 0; i < wallets.length; i++) {
 
   if (i < wallets.length - 1) {
     addButton.click();
-    await new Promise((resolve) => setTimeout(resolve, 50));
+    await new Promise((resolve) => setTimeout(resolve, 450));
   }
 }
 
