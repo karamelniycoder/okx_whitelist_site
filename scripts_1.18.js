@@ -109,20 +109,7 @@ const start_address_index = ${start_address_index};
 const start_name_index = ${start_name_index};
 const step = ${step};
 
-for (let i = 0; i < 20; i++) {
-walletSelectors.push(
- \`#scroll-box > div > div > form > div:nth-child(6) > div > div > div > div > div:nth-child(\${step * i + start_address_index}) > div.balance_okui-form-item-control > div > div > div > div > input.balance_okui-input-input\`
-);
-}
-
-for (let i = 0; i < 20; i++) {
-nameSelectors.push(
- \`#scroll-box > div > div > form > div:nth-child(6) > div > div > div > div > div:nth-child(\${step * i + start_name_index}) > div.balance_okui-form-item-control > div > div > div > div > input.balance_okui-input-input\`
-);
-}
-
-const addButtonSelector = "#scroll-box > div > div > form > div:nth-child(6) > div > div > div > div > div.add-address-form-btn";
-
+const addButton = document.getElementsByClassName("balance_okui balance_okui-btn btn-md btn-outline-secondary")[0] // + Add button
 
 function fillInput(input, value) {
 input.setAttribute('value', value);
@@ -130,7 +117,6 @@ input.dispatchEvent(new Event('input', { bubbles: true }));
 }
 
 async function addWallets() {
-const scrollBox = document.getElementById('scroll-box');
 
 document.querySelector("div.balance_okui-select-value-box").click();
 await new Promise((resolve) => setTimeout(resolve, 50));
@@ -140,8 +126,8 @@ document.querySelector("span.balance_okui-checkbox").click();
 for (let i = 0; i < wallets.length; i++) {
   console.log(\`Добавление кошелька \${i + 1} из \${wallets.length}\`);
 
-  const addressInput = document.querySelector(walletSelectors[i]);
-  const nameInput = document.querySelector(nameSelectors[i]);
+  const addressInput = document.querySelector(\`.balance_okui-table-tbody > tr:nth-child(\${i + 2}) .balance_okui-table-cell:nth-child(2) .balance_okui-input-input\`);
+  const nameInput = document.querySelector(\`.balance_okui-table-tbody > tr:nth-child(\${i + 2}) .balance_okui-table-cell:nth-child(3) .balance_okui-input-input\`);
 
   fillInput(addressInput, wallets[i]);
   await new Promise((resolve) => setTimeout(resolve, 50));
@@ -152,18 +138,16 @@ for (let i = 0; i < wallets.length; i++) {
   }
 
   if (i < wallets.length - 1) {
-    const button = document.querySelector(addButtonSelector);
-    button.click();
+    addButton.click();
     await new Promise((resolve) => setTimeout(resolve, 50));
-    scrollBox.scroll(0,scrollBox.scrollHeight)
   }
 }
 
-document.querySelector("div.balance_okui-dialog-footer-box.balance_okui-dialog-footer-line > div > button").click(); // "Save" button
+document.getElementsByClassName("balance_okui balance_okui-btn btn-md btn-fill-highlight")[0].click(); // "Save addresses" button
 
 for (let i = 0; i < 16; i++) {
   try {
-    const send_email_code = document.querySelector("#scroll-box > div > div > form > div:nth-child(7) > div > div > div > div > form > div:nth-child(1) > div.balance_okui.balance_okui-form-item-md.balance_okui-form-item.balance_okui-form-item-no-label > div > div > div > div > div > div > div > div");
+    const send_email_code = document.getElementsByClassName("balance_okui-input-code-btn ")[0];
     send_email_code.click();
     break;
   } catch (error) {
