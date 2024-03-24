@@ -78,7 +78,10 @@ networks.forEach(function(network) {
     else if (walletsType === "Aptos Address") {
         AddressesArea.cols = 70;
         CodeArea.cols = 128;
-        chain_strings = `document.querySelector("div.balance_okui.balance_okui-popup.select-popup-reference > div > div > div > div > div > div > div:nth-child(2)").click(); // Universal address`
+        chain_strings = `document.querySelector("div.balance_okui.balance_okui-popup.select-popup-reference > div > div > div > div > div > div > div:nth-child(2)").click(); // Universal address
+document.getElementsByClassName("balance_okui-select-value-box")[2].click(); // Select Aptos
+await new Promise((resolve) => setTimeout(resolve, 50));
+document.querySelector("div.balance_okui-select-item").click();`
     }
     else if (walletsType === "Harmony Address") {
         AddressesArea.cols = 50;
@@ -147,7 +150,7 @@ document.getElementsByClassName("balance_okui balance_okui-btn btn-md btn-fill-h
 
 for (let i = 0; i < 16; i++) {
   try {
-    const send_email_code = document.getElementsByClassName("balance_okui-input-code-btn ")[0];
+    const send_email_code = document.querySelector("button.balance_okui.balance_okui-btn.btn-xxs.btn-outline-primary");
     send_email_code.click();
     break;
   } catch (error) {
