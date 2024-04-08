@@ -146,6 +146,7 @@ for (let i = 0; i < wallets.length; i++) {
   }
 }
 
+await new Promise((resolve) => setTimeout(resolve, 250));
 document.getElementsByClassName("balance_okui balance_okui-btn btn-md btn-fill-highlight")[0].click(); // "Save addresses" button
 
 for (let i = 0; i < 16; i++) {
