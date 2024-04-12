@@ -83,6 +83,14 @@ document.getElementsByClassName("balance_okui-select-value-box")[2].click(); // 
 await new Promise((resolve) => setTimeout(resolve, 50));
 document.querySelector("div.balance_okui-select-item").click();`
     }
+    else if (walletsType === "Solana Address") {
+        AddressesArea.cols = 44;
+        CodeArea.cols = 102;
+        chain_strings = `document.querySelector("div.balance_okui.balance_okui-popup.select-popup-reference > div > div > div > div > div > div > div:nth-child(2)").click(); // Universal address
+document.getElementsByClassName("balance_okui-select-value-box")[2].click(); // Select Solana
+await new Promise((resolve) => setTimeout(resolve, 50));
+document.querySelector("div.balance_okui-select-item").click();`
+    }
     else if (walletsType === "Harmony Address") {
         AddressesArea.cols = 50;
         CodeArea.cols = 108;
