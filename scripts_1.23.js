@@ -129,6 +129,14 @@ input.dispatchEvent(new Event('input', { bubbles: true }));
 
 async function addWallets() {
 
+// change verification period
+document.querySelector("#root > div > div > div.balance-bottom > div > form > div.balance_okui.balance_okui-form-item-md.balance_okui-form-item.balance_okui-form-item-no-label.AuthCheckBox_authFlagFormItem__AvgBg > div > div > div > label > span.balance_okui-checkbox-children > button > span").click();
+await new Promise((resolve) => setTimeout(resolve, 50));
+document.querySelector("#scroll-box > div > div > div > label:nth-child(1) > span.balance_okui-radio > input").click();
+await new Promise((resolve) => setTimeout(resolve, 150));
+document.querySelector("#body > div.balance_okui.balance_okui-transition-fade.balance_okui-dialog.VerificationPeriodSelectDialog_verificationPeriodSelectDialog__eeU5N.balance_okui-dialog-float.balance_okui-transition-fade-entered > div > div.balance_okui-dialog-footer-box.balance_okui-dialog-footer-line > div > button > span").click();
+await new Promise((resolve) => setTimeout(resolve, 150));
+
 document.querySelector("div.balance_okui-select-value-box").click();
 await new Promise((resolve) => setTimeout(resolve, 50));
 ${chain_strings}
