@@ -176,8 +176,8 @@ h2 {
 
 .toast-container {
     position: fixed;
-    top: 670px;
-    left: 280px;
+    top: 380px;
+    left: 1060px;
     width: var(--toast-width)
 }
 
