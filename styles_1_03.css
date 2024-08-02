@@ -107,6 +107,8 @@ select:hover {
     padding-right: 3px;
     text-align: right;
     color: #858585;
+    font-size: 12px;
+    line-height: 1.5;
 }
 
 .row {
