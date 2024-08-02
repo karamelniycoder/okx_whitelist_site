@@ -98,6 +98,8 @@ select:hover {
     padding-right: 3px;
     text-align: right;
     color: #858585;
+    font-size: 12px;
+    line-height: 1.5;
 }
 .line-numbers_5 {
     margin-top: 3px;
@@ -119,6 +121,8 @@ textarea {
     transition-duration: 0.25s;
     overflow: hidden;
     border-radius: 4px;
+    font-size: 12px;
+    line-height: 1.5;
 }
 
 .colored_textarea {
