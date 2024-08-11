@@ -124,13 +124,13 @@ input.dispatchEvent(new Event('input', { bubbles: true }));
 async function addWallets() {
 
 // change verification period
-document.querySelector("#root > div > div > div.balance-bottom > div > form > div.balance_okui.balance_okui-form-item-md.balance_okui-form-item.balance_okui-form-item-no-label.AuthCheckBox_authFlagFormItem__4xrkt > div > div > div > label > span.balance_okui-checkbox > input").click();
+document.querySelector("#root > div > div > div.balance-bottom > div > form > div.balance_okui.balance_okui-form-item-md.balance_okui-form-item.balance_okui-form-item-no-label.AuthCheckBox_authFlagFormItem__m3EU\\\\+ > div > div > div > label > span.balance_okui-checkbox > input").click();
 await new Promise((resolve) => setTimeout(resolve, 50));
-document.querySelector("#root > div > div > div.balance-bottom > div > form > div.balance_okui.balance_okui-form-item-md.balance_okui-form-item.balance_okui-form-item-no-label.AuthCheckBox_authFlagFormItem__4xrkt > div > div > div > label > span.balance_okui-checkbox-children > button").click();
+document.querySelector("#root > div > div > div.balance-bottom > div > form > div.balance_okui.balance_okui-form-item-md.balance_okui-form-item.balance_okui-form-item-no-label.AuthCheckBox_authFlagFormItem__m3EU\\\\+ > div > div > div > label > span.balance_okui-checkbox-children > button > span > i").click();
 await new Promise((resolve) => setTimeout(resolve, 150));
 document.querySelector("#scroll-box > div > div > div > label:nth-child(1) > span.balance_okui-radio > input").click();
 await new Promise((resolve) => setTimeout(resolve, 150));
-document.querySelector("#body > div.balance_okui.balance_okui-transition-fade.balance_okui-dialog.VerificationPeriodSelectDialog_verificationPeriodSelectDialog__4kz6k.balance_okui-dialog-float.balance_okui-transition-fade-entered > div > div.balance_okui-dialog-footer-box.balance_okui-dialog-footer-line > div > button").click();
+document.querySelector("#body > div.balance_okui.balance_okui-transition-fade.balance_okui-dialog.VerificationPeriodSelectDialog_verificationPeriodSelectDialog__3FD0J.balance_okui-dialog-float.balance_okui-transition-fade-entered > div > div.balance_okui-dialog-footer-box.balance_okui-dialog-footer-line > div > button > span").click();
 
 document.querySelector("div.balance_okui-select-value-box").click();
 await new Promise((resolve) => setTimeout(resolve, 50));
@@ -140,8 +140,8 @@ document.querySelector("span.balance_okui-checkbox").click();
 for (let i = 0; i < wallets.length; i++) {
   console.log(\`Добавление кошелька \${i + 1} из \${wallets.length}\`);
 
-  const addressInput = document.querySelector(\`.balance_okui-table-tbody > tr:nth-child(\${i + 2}) .balance_okui-table-cell:nth-child(2) .balance_okui-input-input\`);
-  const nameInput = document.querySelector(\`.balance_okui-table-tbody > tr:nth-child(\${i + 2}) .balance_okui-table-cell:nth-child(3) .balance_okui-input-input\`);
+  const addressInput = document.querySelector(\`div.balance_okui-table-content > table > tbody > tr:nth-child(\${i + 2}) > td:nth-child(5) > div > div > div.balance_okui-form-item-control-input > div > div > div.balance_okui-input-box > input.balance_okui-input-input\`)
+  const nameInput = document.querySelector(\`div.balance_okui-table-content > table > tbody > tr:nth-child(\${i + 2}) > td:nth-child(7) > div > div > div > div > div > div > input.balance_okui-input-input\`)
 
   fillInput(addressInput, wallets[i]);
   await new Promise((resolve) => setTimeout(resolve, 50));
@@ -158,7 +158,7 @@ for (let i = 0; i < wallets.length; i++) {
 }
 
 await new Promise((resolve) => setTimeout(resolve, 250));
-document.querySelector("#root > div > div > div.balance-bottom > div > form > div.balance_okui.balance_okui-form-item-md.balance_okui-form-item.balance_okui-form-item-no-label.AuthCheckBox_authFlagFormItem__4xrkt > div > div > div > label > span.balance_okui-checkbox > input").click();
+document.querySelector("#root > div > div > div.balance-bottom > div > form > div.balance_okui.balance_okui-form-item-md.balance_okui-form-item.balance_okui-form-item-no-label.AuthCheckBox_authFlagFormItem__m3EU\\\\+ > div > div > div > label > span.balance_okui-checkbox > input").click(); // Verify
 await new Promise((resolve) => setTimeout(resolve, 50));
 document.getElementsByClassName("balance_okui balance_okui-btn btn-md btn-fill-highlight")[0].click(); // "Save addresses" button
 
