@@ -52,6 +52,10 @@ function codeOnChange() {
     let step = 5;
     let start_address_index = 3;
     let start_name_index = 5;
+    let advanced_string = ''
+    let chain_num = 2;
+    let chain_step = 3;
+
 
     if (walletsType === "EVM Address") {
         AddressesArea.cols = 50;
@@ -81,9 +85,18 @@ document.querySelector("div.balance_okui-select-item").click();`
         AddressesArea.cols = 44;
         CodeArea.cols = 102;
         chain_strings = `document.querySelector("div.balance_okui.balance_okui-popup.select-popup-reference > div > div > div > div > div > div > div:nth-child(2)").click(); // Universal address
-document.getElementsByClassName("balance_okui-select-value-box")[2].click(); // Select Solana
+await new Promise((resolve) => setTimeout(resolve, 1000));`
+        advanced_string = `await new Promise((resolve) => setTimeout(resolve, 150));
+document.getElementsByClassName("balance_okui-select-value-box")[\`\${2 + i * 3}\`].click(); // open chains list
 await new Promise((resolve) => setTimeout(resolve, 50));
-document.querySelector("div.balance_okui-select-item").click();`
+
+chains = document.querySelector(\`tr:nth-child(\${i + 2}) > td:nth-child(4) > div > div > div > div > div > div.balance_okui.balance_okui-popup.select-popup-reference > div > div > div > div > div > div.balance_okui-select-item-container.balance_okui-select-item-container-real\`);
+for (chain of chains.children) {
+    if (chain.innerText.indexOf('Solana') === 0) {
+        chain.click();
+    }
+}`
+
     }
     else if (walletsType === "Harmony Address") {
         AddressesArea.cols = 50;
@@ -124,13 +137,13 @@ input.dispatchEvent(new Event('input', { bubbles: true }));
 async function addWallets() {
 
 // change verification period
-document.querySelector("#root > div > div > div.balance-bottom > div > form > div.balance_okui.balance_okui-form-item-md.balance_okui-form-item.balance_okui-form-item-no-label.AuthCheckBox_authFlagFormItem__m3EU\\\\+ > div > div > div > label > span.balance_okui-checkbox > input").click();
-await new Promise((resolve) => setTimeout(resolve, 50));
 document.querySelector("#root > div > div > div.balance-bottom > div > form > div.balance_okui.balance_okui-form-item-md.balance_okui-form-item.balance_okui-form-item-no-label.AuthCheckBox_authFlagFormItem__m3EU\\\\+ > div > div > div > label > span.balance_okui-checkbox-children > button > span > i").click();
 await new Promise((resolve) => setTimeout(resolve, 150));
 document.querySelector("#scroll-box > div > div > div > label:nth-child(1) > span.balance_okui-radio > input").click();
 await new Promise((resolve) => setTimeout(resolve, 150));
 document.querySelector("#body > div.balance_okui.balance_okui-transition-fade.balance_okui-dialog.VerificationPeriodSelectDialog_verificationPeriodSelectDialog__3FD0J.balance_okui-dialog-float.balance_okui-transition-fade-entered > div > div.balance_okui-dialog-footer-box.balance_okui-dialog-footer-line > div > button > span").click();
+// document.querySelector("#root > div > div > div.balance-bottom > div > form > div.balance_okui.balance_okui-form-item-md.balance_okui-form-item.balance_okui-form-item-no-label.AuthCheckBox_authFlagFormItem__m3EU\\\\+ > div > div > div > label > span.balance_okui-checkbox > input").click();
+await new Promise((resolve) => setTimeout(resolve, 50));
 
 document.querySelector("div.balance_okui-select-value-box").click();
 await new Promise((resolve) => setTimeout(resolve, 50));
@@ -139,6 +152,8 @@ document.querySelector("span.balance_okui-checkbox").click();
 
 for (let i = 0; i < wallets.length; i++) {
   console.log(\`Добавление кошелька \${i + 1} из \${wallets.length}\`);
+  
+  ${advanced_string}
 
   const addressInput = document.querySelector(\`div.balance_okui-table-content > table > tbody > tr:nth-child(\${i + 2}) > td:nth-child(5) > div > div > div.balance_okui-form-item-control-input > div > div > div.balance_okui-input-box > input.balance_okui-input-input\`)
   const nameInput = document.querySelector(\`div.balance_okui-table-content > table > tbody > tr:nth-child(\${i + 2}) > td:nth-child(7) > div > div > div > div > div > div > input.balance_okui-input-input\`)
@@ -158,7 +173,7 @@ for (let i = 0; i < wallets.length; i++) {
 }
 
 await new Promise((resolve) => setTimeout(resolve, 250));
-document.querySelector("#root > div > div > div.balance-bottom > div > form > div.balance_okui.balance_okui-form-item-md.balance_okui-form-item.balance_okui-form-item-no-label.AuthCheckBox_authFlagFormItem__m3EU\\\\+ > div > div > div > label > span.balance_okui-checkbox > input").click(); // Verify
+// document.querySelector("#root > div > div > div.balance-bottom > div > form > div.balance_okui.balance_okui-form-item-md.balance_okui-form-item.balance_okui-form-item-no-label.AuthCheckBox_authFlagFormItem__m3EU\\\\+ > div > div > div > label > span.balance_okui-checkbox > input").click(); // Verify
 await new Promise((resolve) => setTimeout(resolve, 50));
 document.getElementsByClassName("balance_okui balance_okui-btn btn-md btn-fill-highlight")[0].click(); // "Save addresses" button
 
