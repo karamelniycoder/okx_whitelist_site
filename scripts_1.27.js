@@ -77,9 +77,17 @@ networks.forEach(function(network) {
         AddressesArea.cols = 70;
         CodeArea.cols = 128;
         chain_strings = `document.querySelector("div.balance_okui.balance_okui-popup.select-popup-reference > div > div > div > div > div > div > div:nth-child(2)").click(); // Universal address
-document.getElementsByClassName("balance_okui-select-value-box")[2].click(); // Select Aptos
+await new Promise((resolve) => setTimeout(resolve, 1000));`
+        advanced_string = `await new Promise((resolve) => setTimeout(resolve, 150));
+document.getElementsByClassName("balance_okui-select-value-box")[\`\${2 + i * 3}\`].click(); // open chains list
 await new Promise((resolve) => setTimeout(resolve, 50));
-document.querySelector("div.balance_okui-select-item").click();`
+
+chains = document.querySelector(\`tr:nth-child(\${i + 2}) > td:nth-child(4) > div > div > div > div > div > div.balance_okui.balance_okui-popup.select-popup-reference > div > div > div > div > div > div.balance_okui-select-item-container.balance_okui-select-item-container-real\`);
+for (chain of chains.children) {
+    if (chain.innerText.indexOf('Aptos') === 0) {
+        chain.click();
+    }
+}`
     }
     else if (walletsType === "Solana Address") {
         AddressesArea.cols = 44;
